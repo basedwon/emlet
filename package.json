@@ -1,6 +1,6 @@
 {
   "name": "emlet",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "1MB semantic embedding engine, in-browser, zero deps.",
   "main": "emlet.js",
   "exports": {

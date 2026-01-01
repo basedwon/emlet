@@ -15,8 +15,8 @@
  * Contact: basedwon@tuta.com
  * 
  * @license SEE LICENSE IN LICENSE
- * @version 0.0.1
- * @build 0.0.1+b0112963
+ * @version 0.1.0
+ * @build 0.1.0+b0112963
  */
 (function (root, factory) {
   if (typeof module === 'object' && typeof module.exports === 'object')
