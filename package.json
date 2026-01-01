@@ -1,0 +1,58 @@
+{
+  "name": "emlet",
+  "version": "0.0.1",
+  "description": "1MB semantic embedding engine, in-browser, zero deps.",
+  "main": "emlet.js",
+  "exports": {
+    ".": "./emlet.js"
+  },
+  "types": "types.d.ts",
+  "files": [
+    "emlet.js",
+    "types.d.ts",
+    "README.md"
+  ],
+  "devDependencies": {
+    "@basd/testr": "^0.1.6"
+  },
+  "scripts": {
+    "test": "testr test.js"
+  },
+  "homepage": "https://github.com/basedwon/emlet#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/basedwon/emlet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/basedwon/emlet/issues"
+  },
+  "author": "Basedwon <basedwon@tuta.com>",
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "ai",
+    "browser",
+    "compact-model",
+    "emoji",
+    "embedding",
+    "embedding-model",
+    "inference",
+    "javascript",
+    "ml",
+    "model",
+    "nlp",
+    "no-dependencies",
+    "obfuscated",
+    "offline",
+    "oov",
+    "portable",
+    "search",
+    "semantic",
+    "semantic-search",
+    "semvec",
+    "text",
+    "tokenizer",
+    "vec",
+    "vector",
+    "emlet"
+  ]
+}
