@@ -1,6 +1,6 @@
 # Emlet
 
-> **A compact embedding engine built for the web.**
+> **An embedding engine built for the sovereign web.**
 
 [![npm](https://img.shields.io/npm/v/emlet?style=flat&logo=npm)](https://www.npmjs.com/package/emlet)
 [![pipeline](https://gitlab.com/basedwon/emlet/badges/master/pipeline.svg)](https://gitlab.com/basedwon/emlet/-/pipelines)
@@ -12,19 +12,24 @@
 [![Twitter](https://img.shields.io/badge/@basdwon%20-%20?logo=twitter&color=%23383a40)](https://twitter.com/basdwon)
 [![Discord](https://img.shields.io/badge/Basedwon%20-%20?logo=discord&color=%23383a40)](https://discordapp.com/users/basedwon)
 
-Emlet is a fast, fully self-contained semantic embedding model designed to run anywhere JavaScript runs—browser, Node, edge, offline. No dependencies, no GPU, no network calls. Just load it and embed.
+Emlet is a fast, fully self-contained semantic embedding engine designed to run anywhere JavaScript runs—browser, Node, edge, offline. No dependencies, no GPU, no network calls. Just load and embed.
 
-The entire engine fits in ~1 MB and produces deterministic vector embeddings suitable for similarity search, clustering, retrieval, tagging, or downstream ML workflows.
+The entire engine fits in 1 MB and produces deterministic vector embeddings suitable for similarity search, clustering, retrieval, tagging, or downstream ML workflows.
 
 ## Features
 
-* In-browser semantic embeddings
-* Deterministic output (same input → same vector)
-* Offline-first, zero runtime dependencies
-* Unicode-aware: text, symbols, emoji, ZWJ sequences
-* Out-of-vocabulary synthesis (no missing tokens)
-* Configurable vector dimensionality
-* Optional “glimpse” tail of the full 1536D space
+- 100M parameters, ~1MB total size
+- 7K tokens/sec throughput (in the browser)
+- Deterministic output (same input → same vector)
+- Out-of-vocabulary synthesis (no missing tokens)
+- Unicode-aware (text, emoji, symbols, ZWJ)
+- Configurable vector size (1-1568D)
+- Offline-first, zero dependencies
+- Vanilla JavaScript, edge-ready
+- No GPU. No cloud. No API.
+- Self-extracting runtime
+- Neuro-symbolic core
+- A digital familiar
 
 ## Installation
 
@@ -52,8 +57,6 @@ import emlet from 'emlet'
 import { emlet, Emlet } from 'emlet'
 ```
 
-Both styles are supported from the same file.
-
 ## Basic Usage
 
 ```js
@@ -69,8 +72,9 @@ The default export is a ready-to-use model instance.
 You can create your own instance with a different output size:
 
 ```js
-const model = new Emlet(128)       // 128D output
-const model2 = new Emlet(64, true) // 64D head + 32D tail = 96D
+const modelA = new Emlet()           // 96D default
+const modelB = new Emlet(128)        // 128D output
+const modelC = new Emlet(256, true)  // 256D head + 32D tail = 288D
 ```
 
 ### Constructor
@@ -120,56 +124,6 @@ emlet.embed('[')
 
 This allows punctuation-level modeling when needed without polluting normal text embeddings.
 
-## Common Patterns
-
-### Text Chunking
-
-```js
-function chunkText(text, maxLen = 80) {
-  const words = text.split(/\s+/)
-  const chunks = []
-  let chunk = ''
-
-  for (let word of words) {
-    if ((chunk + ' ' + word).trim().length > maxLen) {
-      chunks.push(chunk.trim())
-      chunk = word
-    } else {
-      chunk += ' ' + word
-    }
-  }
-
-  if (chunk) chunks.push(chunk.trim())
-  return chunks
-}
-```
-
-### Cosine Similarity
-
-```js
-function cosineSim(a, b) {
-  const dot = a.reduce((s, v, i) => s + v * b[i], 0)
-  const normA = Math.sqrt(a.reduce((s, v) => s + v * v, 0))
-  const normB = Math.sqrt(b.reduce((s, v) => s + v * v, 0))
-  return dot / (normA * normB + 1e-8)
-}
-```
-
-### Top-K Similarity Search
-
-```js
-function topKSimilar(input, options, k = 5) {
-  const base = emlet.embed(input)
-  return options
-    .map(text => ({
-      text,
-      score: cosineSim(base, emlet.embed(text))
-    }))
-    .sort((a, b) => b.score - a.score)
-    .slice(0, k)
-}
-```
-
 ## API Surface
 
 Emlet intentionally exposes a minimal API:
@@ -179,17 +133,22 @@ Emlet intentionally exposes a minimal API:
 
 Everything else—chunking, similarity, indexing, clustering—is left to userland.
 
+## Examples
+
+See [`test.js`](./test.js) for example usage including batch encoding, similarity math, and vector inspection.
+
+
 ## Testing
 
 Emlet includes a test suite built with [testr](https://npmjs.com/package/@basd/testr).
 
-To run the test, first clone the respository:
+To run the test, first clone the repository:
 
 ```sh
 git clone https://github.com/basedwon/emlet.git
 ```
 
-Install the (dev) dependencies, then run `npm test`:
+Install the dependencies, then run `npm test`:
 
 ```bash
 npm install
@@ -198,7 +157,7 @@ npm test
 
 ## Donations
 
-If you find this project useful and want to help support further development, please send us some coin. We greatly appreciate any and all contributions. Thank you!
+If Emlet sparks something useful in your work, consider sending some coin to support further development.
 
 **Bitcoin (BTC):**
 ```
