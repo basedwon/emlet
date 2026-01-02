@@ -1,7 +1,7 @@
 {
   "name": "emlet",
-  "version": "0.1.0",
-  "description": "1MB semantic embedding engine, in-browser, zero deps.",
+  "version": "0.1.1",
+  "description": "An embedding engine built for the sovereign web.",
   "main": "emlet.js",
   "exports": {
     ".": "./emlet.js"
@@ -32,6 +32,7 @@
     "ai",
     "browser",
     "compact-model",
+    "deterministic",
     "emoji",
     "embedding",
     "embedding-model",
@@ -39,6 +40,7 @@
     "javascript",
     "ml",
     "model",
+    "neuro-symbolic",
     "nlp",
     "no-dependencies",
     "obfuscated",
@@ -53,6 +55,7 @@
     "tokenizer",
     "vec",
     "vector",
+    "vector-embeddings",
     "emlet"
   ]
 }
