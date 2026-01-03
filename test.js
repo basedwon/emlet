@@ -16,6 +16,12 @@ describe('Emlet', () => {
     expect(vec.length).to.equal(128)
   })
   
+  it('should support smaller dimensions', () => {
+    const model = new Emlet(16)
+    const vec = model.embed('test')
+    expect(vec.length).to.equal(16)
+  })
+  
   it('should synthesize OOV words', () => {
     const vec = emlet.embed('quantaflux')
     expect(vec.length).to.equal(96)
