@@ -1,6 +1,6 @@
 {
   "name": "emlet",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "An embedding engine built for the sovereign web.",
   "main": "emlet.js",
   "exports": {
@@ -16,6 +16,7 @@
     "@basd/testr": "^0.1.6"
   },
   "scripts": {
+    "dev": "nodemon -x testr test.js",
     "test": "testr test.js"
   },
   "homepage": "https://github.com/basedwon/emlet#readme",

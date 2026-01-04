@@ -49,6 +49,12 @@ describe('Emlet', () => {
     expect(vecs.every(v => v.length === 96)).to.be.true
   })
 
+  it('should embed long text with rare words', () => {
+    const model = new Emlet(128)
+    const vec = model.embed('These long passages with rare words can challenge the affix embedding mechanism.')
+    expect(vec.length).to.equal(128)
+  })
+
   it('should find top K similar phrases using cosine similarity', () => {
     const phrases = [
       'the sun rises in the east',
