@@ -1,6 +1,6 @@
 {
   "name": "emlet",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "An embedding engine built for the sovereign web.",
   "main": "emlet.js",
   "exports": {
